@@ -1,10 +1,4 @@
-```
-npm init --y
-npm i -D typescript @types/express ts-node nodemon
-npx tsc --init
-npm i express mongoose
-```
-add this to tsconfig.json
-```
-"include": ["src/**/*.ts"]
-```
+npm i express zod config cors mongoose pino pino-pretty dayjs bcrypt jsonwebtoken lodash nanoid
+
+
+npm i @types/body-parser @types/config @types/cors @types/mongoose @types/bcrypt @types/jsonwebtoken @types/lodash @types/nanoid -D

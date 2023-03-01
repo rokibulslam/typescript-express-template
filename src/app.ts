@@ -1,14 +1,15 @@
-import express, { NextFunction, Request, Response } from "express";
-import createHttpError from "http-errors";
+import express from 'express';
+import connect from './utils/connect.js';
+import dotenv from 'dotenv'
+import routes from './routes.js';
+dotenv.config({path:"../config.env"})
 
+const port = process.env.PORT;
 const app = express();
-app.get('/', (req:Request, res:Response) => {
-    res.json("Hello World")
-})
 
-app.get("*", (req:Request, res:Response) => {
-    res.status(500).send("Route Not Found")
-})
-app.listen(5000, () => {
-    console.log("Server Started o port 5000");
+app.listen(port, async () => {
+    
+    await connect()
+    routes(app)
+    console.log('listening on port 5000')
 })

@@ -7,16 +7,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import express from 'express';
-import connect from './utils/connect.js';
-import dotenv from 'dotenv';
-import routes from './routes.js';
-dotenv.config({ path: "../config.env" });
-const port = process.env.PORT;
-const app = express();
-app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
-    yield connect();
-    routes(app);
-    console.log('listening on port 5000');
-}));
-//# sourceMappingURL=app.js.map
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+dotenv.config({ path: "../../config.env" });
+function connect() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const dbUri = 'mongodb://127.0.0.1:27017';
+        try {
+            yield mongoose.connect(dbUri);
+            console.log("DB connected");
+        }
+        catch (error) {
+            console.log("Not Connected to DB");
+            process.exit(1);
+        }
+    });
+}
+export default connect;
+//# sourceMappingURL=connect.js.map

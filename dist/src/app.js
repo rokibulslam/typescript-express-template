@@ -8,15 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import express from 'express';
-import connect from './utils/connect.js';
-import dotenv from 'dotenv';
-import routes from './routes.js';
-dotenv.config({ path: "../config.env" });
-const port = process.env.PORT;
+const port = config.get("port");
 const app = express();
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
-    yield connect();
-    routes(app);
+    // await connect()
     console.log('listening on port 5000');
 }));
 //# sourceMappingURL=app.js.map
