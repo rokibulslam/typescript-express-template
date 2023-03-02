@@ -12,7 +12,7 @@ import connect from './utils/connect.js';
 import dotenv from 'dotenv';
 import routes from './routes.js';
 dotenv.config({ path: "../config.env" });
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 const app = express();
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     yield connect();
